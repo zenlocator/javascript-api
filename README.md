@@ -58,7 +58,7 @@ This is a list of events your code can listen to by using the `.on(event, fn)` m
 | Event Name            | Description                                                                                                                                                                                  |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `LOCATION_OPENED`     | Location has either been opened by user or by widget's settings (auto-open). The function parameters will contain the location object.                                                       |
-| `SEARCH_LOCATIONS`    | A search has been done. The function parameters will contain the search query, as well as additional search parameters (like radius, filters and products) as well as the number of results. | 
+| `SEARCH_LOCATIONS`    | A search has been done. The function parameters will contain the search query, as well as additional search parameters (like radius, filters and products) as well as the number of results. |
 | `BUTTON_CLICK`        | Location button has been clicked. The data will contain location and button details.                                                                                                         |
 | `CONTACT_CLICK`       | Location contact info has been clicked. The data will contain location and contact details.                                                                                                  |
 | `BROWSER_GEOLOCATION` | Browser gelocation has been triggered after the user has allowed it. The data will contain coordinates as well as an approximate address.                                                    |
@@ -69,14 +69,16 @@ This is a list of events your code can listen to by using the `.on(event, fn)` m
 
 ## Examples
 
-Getting a list of locations currenty loaded on the widget:
+Getting a list of locations after the search:
 
 ```html
 <script type="text/javascript">
   window.zenlocatorInit = function(widget, type) {
     if (type === 'map') {
-      var locations = widget.getLocations();
-      console.log(`there's currently ${locations.length} locations on the map`);
+      widget.on('SEARCH_LOCATIONS', (data) => {
+        var locations = widget.getLocations();
+        console.log(`there's ${locations.length} locations in "${data.query}"`);
+      });
     }
   };
 </script>
@@ -109,7 +111,7 @@ Trigger an action every time a button has been clicked on a location:
   window.zenlocatorInit = function(widget, type) {
     if (type === 'map') {
       widget.on('BUTTON_CLICK', (data) => {
-        console.log(`you've clicked the "${data.button.}" button on location "${data.location.name}"`);
+        console.log(`you've clicked the "${data.button.name}" button on location "${data.location.name}"`);
       });
     }
   };
