@@ -35,6 +35,8 @@ By passing the `callback` parameter to your script you have the ability to be no
 
 Otherwise, you can also watch for the global `window.zenlocator.map` object that is automatically created on your website.
 
+**NOTE:** It's important that your page actually includes the `<script />` tag and does not load the script asynchronously; otherwise, the callback might not be triggered.
+
 ## Methods
 
 The following methods are available on your widget objects (`window.zenlocator.map`, `window.zenlocator.directory`, etc) once the code has been initialized. Scroll down for more examples.
