@@ -23,7 +23,7 @@ By passing the `callback` parameter to your script you have the ability to be no
   window.zenlocatorLoaded = function(widget, type) {
     if (type === 'map') {
       console.log('your map widget has been initialized');
-	}
+  }
   };
 </script>
 
@@ -44,7 +44,7 @@ Otherwise, you can also watch for the global `window.zenlocator` object that is 
 | `getRetailers()` | Gets all the retailers.                                            | `var retailers = widget.getRetailers();`                                                               |
 | `getLanguage()`  | Get the language object loaded for the current visitor/browser.    | `var language = widget.getLanguage();`                                                                 |
 | `getHours()`     | Gets the array of hours objects.                                   | `var hours = widget.getHours();`                                                                       |
-| `on(event, fn)`  | Adds a listener for the `event` that will trigger a function `fn`. | `widget.on('LOCATION_OPENED', (data) => console.log('you have opened location '+data.location.name);`  |
+| `on(event, fn)`  | Adds a listener for the `event` that will trigger a function `fn`. | <code>widget.on('LOCATION_OPENED', (data) => console.log('you have opened location '+data.location.name);</code>  |
 | `off(event, fn)` | Removes the listener added by `on(event, fn)`.                     | `widget.off('LOCATION_OPENED', (data) => console.log('you have opened location '+data.location.name);` |
 
 ## Events
@@ -72,8 +72,8 @@ Getting a list of locations currenty loaded on the widget:
   window.zenlocatorLoaded = function(widget, type) {
     if (type === 'map') {
       var locations = widget.getLocations();
-	  console.log(`there's currently ${locations.length} locations on the map`);
-	}
+      console.log(`there's currently ${locations.length} locations on the map`);
+    }
   };
 </script>
 
@@ -88,9 +88,9 @@ Triggering an action every time a location is viewed/opened:
   window.zenlocatorLoaded = function(widget, type) {
     if (type === 'map') {
       widget.on('LOCATION_OPENED', (data) => {
-		console.log(`you've opened location "${data.location.name}"`);
-	  });
-	}
+        console.log(`you've opened location "${data.location.name}"`);
+      });
+    }
   };
 </script>
 
@@ -105,9 +105,9 @@ Trigger an action every time a button has been clicked on a location:
   window.zenlocatorLoaded = function(widget, type) {
     if (type === 'map') {
       widget.on('BUTTON_CLICK', (data) => {
-		console.log(`you've clicked the "${data.button.}" button on location "${data.location.name}"`);
-	  });
-	}
+        console.log(`you've clicked the "${data.button.}" button on location "${data.location.name}"`);
+      });
+    }
   };
 </script>
 
