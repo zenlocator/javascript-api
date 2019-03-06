@@ -1,6 +1,10 @@
 
 # CHANGELOG
 
+### 0.6.5
+
+- Unit tests for `getDimensionsFromUrl` (`d193e5`)
+
 ### 0.6.4
 
 - Removing the "save" button for those environments that prevent third-party websites from using `localStorage` (`b9cb76`)
